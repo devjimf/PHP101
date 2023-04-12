@@ -60,4 +60,48 @@
     echo isPalindrome('level');
     echo isPalindrome('A man, a plan, a canal, Panama!');
 
+
+// Problem # 3
+// Complexity: Medium
+// Write a PHP program that takes a string as input 
+// and returns the most frequently occurring character in the string.
+
+// Here's an example input and output to help clarify the problem:
+
+// Input: "Hello, World!"
+// Output: "l"
+
+// Explanation: The character "l" occurs most frequently in the input string, appearing three times.
+
+    function findFreq($str){
+        
+        $freq = array();
+        
+        for($i = 0; $i < strlen($str); $i++){
+            
+            $char = $str[$i];
+            
+            if (array_key_exists($char, $freq)) {
+                $freq[$char]++;
+            } else {
+                $freq[$char] = 1;
+            }
+        }
+        
+        $maxchar = '';
+        $maxfreq = 0;
+        
+        foreach($freq as $char => $count){
+            if($count > $maxfreq){
+                $maxfreq = $count;
+                $maxchar = $char;
+            }
+        }
+        
+        return $maxchar;
+        
+    }
+
+    echo findFreq('boom boom powwwwwwww');
+
 ?>
