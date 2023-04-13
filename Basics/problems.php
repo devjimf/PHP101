@@ -104,4 +104,30 @@
 
     echo findFreq('boom boom powwwwwwww');
 
+// Problem # 4
+// Complexity: easy
+// Write a PHP program to add the digits of a positive integer 
+// repeatedly until the result has a single digit.Go to the editor
+
+// For example given number is 59, the result will be 5.
+
+    function prob4($num){
+       $strnum = strval($num);
+
+       while(strlen($strnum)!= 1){
+        $total = 0;
+        for($i=0 ; $i < strlen($strnum); $i++){
+            $total += intval($strnum[$i]);
+           
+        }
+        $strnum = strval($total);
+
+       }
+
+       return $strnum;
+
+    }
+    echo '</pre>';
+    echo prob4(48);
+
 ?>
