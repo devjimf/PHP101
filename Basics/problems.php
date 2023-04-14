@@ -159,7 +159,7 @@
                 }
             
             }
-            array_push($resultset, $flg);
+           $resultset[] = $flg;
         }
         
         return $resultset;
