@@ -130,4 +130,46 @@
     echo '</pre>';
     echo prob4(48);
 
+// Problem # 5
+
+// Complexity: medium
+// Write a program that accepts an array of words and that outputs
+// an array of indication that it has a double character in that word
+
+// For example ('add', 'ada', 's') this should be (1,0,0);
+
+    function countDoubled($words){
+        
+        $resultset = array();
+        
+        foreach($words as $word){
+            
+            $flg = 0;
+            
+            if(strlen($word) > 1){
+                
+                
+                for($i = 0; $i < strlen($word)-1; $i++){
+                    $char = $word[$i];
+                    
+                    if($char === $word[$i+1]){
+                        
+                        $flg = 1;
+                        break;
+                    }
+                    
+                }
+            
+            }
+            array_push($resultset, $flg);
+        }
+        
+        return $resultset;
+        
+        
+    }
+
+    $c = array('add', '5', 'adds', 'ada','adadd');
+    echo json_encode(countDoubled($c));
+
 ?>
