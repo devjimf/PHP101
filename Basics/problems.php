@@ -154,7 +154,6 @@
                     if($char === $word[$i+1]){
                         
                         $flg = 1;
-                        break;
                     }
                     
                 }
