@@ -131,7 +131,6 @@
     echo prob4(48);
 
 // Problem # 5
-
 // Complexity: medium
 // Write a program that accepts an array of words and that outputs
 // an array of indication that it has a double character in that word
