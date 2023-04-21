@@ -170,4 +170,75 @@
     $c = array('add', '5', 'adds', 'ada','adadd');
     echo json_encode(countDoubled($c));
 
+
+// problem # 6
+// complexity: medium
+// Write a PHP function that takes an array of integers as 
+// input and returns the first pair of integers whose sum is equal to a given target value.
+
+// Function signature: function findPair($arr, $target)
+
+// Input:
+
+// An array of integers, $arr (1 <= count($arr) <= 10^6)
+// A target integer value, $target (1 <= $target <= 10^6)
+// Output:
+
+// An array containing the pair of integers whose sum is equal to 
+// the target value, or an empty array if no such pair exists.
+
+// $arr = [3, 4, 5, 2, 7, 8];
+// $target = 10;
+
+// findPair($arr, $target); // returns [3, 7]
+
+    function findPair($arr, $target){
+        
+        $hash = array();
+        
+        foreach($arr as $value){
+            
+            $compliment =  $target-$value;
+            
+            if(isset($hash[$compliment])){
+                
+                return array($compliment, $value);
+                
+            }
+            
+            $hash[$value] = true;
+            
+        }
+            
+            
+
+        }
+
+// another solution 
+
+    function findPairs($arr, $target) {
+        // Get the length of the input array
+        $n = count($arr);
+        
+        // Iterate over all pairs of integers in the input array
+        for($i = 0; $i < $n; $i++) {
+            for($j = $i + 1; $j < $n; $j++) {
+                // Check whether the sum of the current pair of integers is equal to the target value
+                if($arr[$i] + $arr[$j] == $target) {
+                    // If it is, return the pair of integers
+                    return array($arr[$i], $arr[$j]);
+                }
+            }
+        }
+        
+        // If no such pair exists, return an empty array
+        return array();
+    }
+        
+    $ar = [5, 9, 5, 2, 7, 8];
+    $targ = 10;
+
+    echo json_encode(findPair($ar, $targ));
+
+
 ?>
