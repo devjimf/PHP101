@@ -89,3 +89,38 @@ heapSort($arr);
 print_r($arr);
 echo 2*1+2; //3
 echo floor(2.5); //2
+
+// 3. Write a PHP program to sort a list of elements using Bubble Sort: 
+// This simple sorting algorithm repeatedly compares adjacent 
+// elements and swaps them if they are in the wrong order. It continues 
+// iterating through the list until the entire list is sorted. 
+// Bubble Sort has a time complexity of O(n^2) and 
+// is not very efficient for large datasets.
+
+function bubbleSort($arr){
+
+    $length = count($arr);
+
+    for ($i=0; $i < $length - 1 ; $i++) { 
+
+        for ($j=0; $j < $length - $i - 1 ; $j++) { 
+            
+            if ($arr[$j] > $arr[$j+1]) {
+
+                $temp = $arr[$j];
+                $arr[$j] = $arr[$j+1];
+                $arr[$j+1] = $temp;
+
+            }
+
+        }
+
+    }
+
+    return $arr;
+
+}
+
+$nums= array(4,1,2);
+
+print_r(bubbleSort($nums));
