@@ -124,3 +124,35 @@ function bubbleSort($arr){
 $nums= array(4,1,2);
 
 print_r(bubbleSort($nums));
+
+// 4. Write a Insertion sort algorithm. This algorithm builds the 
+// final sorted array one item at a time. It takes each element and 
+// inserts it into its correct position within the sorted portion of the array. 
+
+function insertionSort($arr){
+    
+    $length = count($arr);
+    
+    for($i=1; $i < $length; $i++){
+        
+        $key = $arr[$i];
+        $j = $i - 1;
+        
+        while($j >= 0 && $arr[$j] > $key){
+            
+            $arr[$j+1] = $arr[$j];
+            $j--;
+            
+        }
+        
+        $arr[$j+1] = $key;
+        
+    }
+    
+    return $arr;
+    
+}
+
+$arra = array(1, 3, 10, 6, 5);
+
+print_r(insertionSort($arra));
