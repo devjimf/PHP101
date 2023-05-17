@@ -35,8 +35,43 @@ if ($index == -1) {
   echo "The key was found at index $index.";
 }
 
+// --------------------------------------------------------------
+
 // Binary search: This is a more efficient searching algorithm 
 // that can be used on sorted data structures. It works by 
 // repeatedly dividing the data structure in half and then searching 
 // the half that is more likely to contain the search key.
 
+function binarySearch($arr, $key){
+    
+    $start = 0;
+    $end = count($arr) - 1;
+    
+    while($start <= $end){
+        $mid = (int)(($start + $end)/2);
+        
+        if($key == $arr[$mid]){
+            return $mid;
+        }else if($key > $arr[$mid]){
+            $start = $mid+1;
+        }else {
+            $end = $mid-1;
+        }
+    }
+
+    return -1;
+}
+
+// Test Case:
+
+$array = [1, 2, 3, 4, 5];
+$key = 2;
+$index = binarySearch($array, $key);
+
+if ($index == -1) {
+  echo "The key was not found.";
+} else {
+  echo "The key was found at index $index.";
+}
+
+// --------------------------------------------------------------
