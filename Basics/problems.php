@@ -240,5 +240,80 @@
 
     echo json_encode(findPair($ar, $targ));
 
+################################
+
+// Problem: Merge Overlapping Intervals
+
+// You are given an array of intervals, where 
+// each interval is represented as a pair of start 
+// and end times. Your task is to merge overlapping intervals.
+
+// For example, given the following intervals:
+
+
+$intervals = [
+    [1, 3],
+    [2, 6],
+    [8, 10],
+    [15, 18]
+];
+
+// Your function should return:
+
+$result = [
+    [1, 6],
+    [8, 10],
+    [15, 18]
+];
+
+
+//Solution:
+
+function mergeIntervals($intervals) {
+    if (count($intervals) <= 1) {
+        return $intervals;
+    }
+
+    // Sort intervals based on their start times
+    usort($intervals, function($a, $b) {
+        return $a[0] - $b[0];
+    });
+
+    $merged = [];
+    $currentInterval = $intervals[0];
+
+    for ($i = 1; $i < count($intervals); $i++) {
+        $currentEnd = $currentInterval[1];
+        $nextStart = $intervals[$i][0];
+        $nextEnd = $intervals[$i][1];
+
+        if ($nextStart <= $currentEnd) {
+            // Intervals overlap, update the end time of the current interval
+            $currentInterval[1] = max($currentEnd, $nextEnd);
+        } else {
+            // Intervals don't overlap, add the current interval to the result
+            $merged[] = $currentInterval;
+            $currentInterval = $intervals[$i];
+        }
+    }
+
+    // Add the last interval to the result
+    $merged[] = $currentInterval;
+
+    return $merged;
+}
+
+// Test case
+$intervals = [
+    [1, 3],
+    [2, 6],
+    [8, 10],
+    [15, 18]
+];
+
+$result = mergeIntervals($intervals);
+print_r($result); // Output: Array([0] => Array([0] => 1 [1] => 6) [1] => Array([0] => 8 [1] => 10) [2] => Array([0] => 15 [1] => 18))
+
+
 
 ?>
